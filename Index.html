@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Housewarming Invitation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: #f7f5f2;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 20px;
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+
+h1 {
+    letter-spacing: 2px;
+    color: #4a4a4a;
+}
+
+h2 {
+    color: #6b6b6b;
+}
+
+.host {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 32px;
+    color: #5a6b5a;
+}
+
+.details {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #444;
+}
+
+.map-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 22px;
+    background: #7c8f7c;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 18px;
+}
+
+.footer {
+    margin-top: 25px;
+    font-size: 15px;
+    color: #555;
+}
+
+/* Flower animation */
+.flower {
+    position: fixed;
+    top: -50px;
+    font-size: 22px;
+    animation: fall linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* Music button */
+.music-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #7c8f7c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>PLEASE JOIN US FOR</h2>
+    <h1>HOUSEWARMING CEREMONY</h1>
+
+    <p>HOSTED BY</p>
+    <div class="host">Dr. Pratima & Mr. Chandreshwar</div>
+
+    <br>
+
+    <p class="details">
+        <b>On Saturday, 14th February 2026</b><br>
+        Time: 05:00 PM
+    </p>
+
+    <p class="details">
+        At Kesar Vihar Colony, Road No.-3,<br>
+        Pole Number-32, Tonko Road,<br>
+        Hatia, Ranchi – 834003
+    </p>
+
+    <a class="map-btn" target="_blank"
+       href="https://maps.app.goo.gl/VEmhcjx1qDyeLcy59?g_st=ipc">
+       📍 View Location
+    </a>
+
+    <div class="footer">
+        <p>Mobile No: 9431707155, 7261827643</p>
+    </div>
+</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">🎵</button>
+
+<script>
+/* Flowers */
+function createFlower() {
+    const flower = document.createElement("div");
+    flower.className = "flower";
+    flower.innerHTML = "🌿";
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.animationDuration = (Math.random() * 3 + 5) + "s";
+    document.body.appendChild(flower);
+
+    setTimeout(() => flower.remove(), 8000);
+}
+setInterval(createFlower, 350);
+
+/* Music */
+const music = document.getElementById("bgMusic");
+let isPlaying = false;
+
+function toggleMusic() {
+    if (!isPlaying) {
+        music.play();
+        isPlaying = true;
+    } else {
+        music.pause();
+        isPlaying = false;
+    }
+}
+
+/* Auto-play on first touch */
+document.addEventListener("click", () => {
+    if (!isPlaying) {
+        music.play();
+        isPlaying = true;
+    }
+}, { once: true });
+</script>
+
+</body>
+</html>
